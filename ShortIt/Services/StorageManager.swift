@@ -13,16 +13,21 @@ final class StorageManager {
     
     private let userDefaults = UserDefaults.standard
     
-    var linkArray: [String] = []
+    var linkArray: [Responce] = []
     
     private init() {}
     
-    func saveUrl(_ title: String, for key: String) {
-        userDefaults.set(title, forKey: key)
-        linkArray.append(title)
+    func saveResponce(_ responce: Responce) {
+        userDefaults.set(responce.shortUrl, forKey: responce.longUrl)
+        linkArray.append(responce)
     }
     
-    func showUrl(for key: String) -> String? {
+//    func saveUrl(_ title: String, forkey key: String) {
+//         userDefaults.set(title, forKey: key)
+//        linkArray.append(title)
+//    }
+    
+    func showUrl(forkey key: String) -> String? {
         userDefaults.string(forKey: key)
     }
 }

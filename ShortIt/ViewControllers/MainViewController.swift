@@ -72,8 +72,9 @@ class MainViewController: UIViewController {
     }
     
     private func saveLink(_ responce: Responce) {
-        StorageManager.shared.saveUrl(responce.shortUrl, for: responce.longUrl)
+        StorageManager.shared.saveResponce(responce)
     }
+    
     
     @objc private func shortURL() {
         guard let text = urlTextField.text else { return }
