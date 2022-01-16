@@ -93,6 +93,14 @@ class MainViewController: UIViewController {
                 }
             }
         }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.shortenButton.alpha = 0.7
+            self.shortenButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+        } completion: { [unowned self] (_) in
+            self.shortenButton.transform = CGAffineTransform.identity
+            self.shortenButton.alpha = 1.0
+        }
     }
     
     @objc private func showInformation() {
