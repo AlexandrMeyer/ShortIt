@@ -2,19 +2,25 @@
 //  WebViewController.swift
 //  ShortIt
 //
-//  Created by Александр on 14/01/2022.
+//  Created by Александр on 16/01/2022.
 //
 
 import UIKit
+import WebKit
 
-class WebViewController: UIWebView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+class WebViewController: UIViewController, WKNavigationDelegate {
+    
+    lazy var wkWebView = WKWebView(frame: view.frame)
+    var url: URL!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        wkWebView.navigationDelegate = self
+        wkWebView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        let request = URLRequest(url: url)
+        wkWebView.load(request)
+        
+        view.addSubview(wkWebView)
     }
-    */
-
 }

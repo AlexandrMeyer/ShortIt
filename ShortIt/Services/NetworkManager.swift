@@ -13,11 +13,11 @@ enum NetworkError: Error {
     case decodingError
 }
 
-class NetworkManager {
+final class NetworkManager {
     
     static let shared = NetworkManager()
     
-    let api = "http://tiny-url.info/api/v1/create?apikey=9874D9BE5139960ACDA&provider=goo_gl&format=json&url="
+    let api = "http://tiny-url.info/api/v1/create?apikey=9874D9BE5139960ACDA&provider=tw_gs&format=json&url="
     
     private init() {}
     

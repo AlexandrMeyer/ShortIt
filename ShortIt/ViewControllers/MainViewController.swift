@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 class MainViewController: UIViewController {
     
@@ -18,7 +19,7 @@ class MainViewController: UIViewController {
     }()
     
     private lazy var urlTextField: UITextField = {
-    let textField = UITextField()
+        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.attributedPlaceholder = NSAttributedString(string: "Enter URL:", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         textField.backgroundColor = UIColor(white: 1, alpha: 0.3)
@@ -40,7 +41,7 @@ class MainViewController: UIViewController {
         button.addTarget(self, action: #selector(shortURL), for: .touchUpInside)
         return button
     }()
-     
+    
     private lazy var openUrlButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +51,7 @@ class MainViewController: UIViewController {
         button.addTarget(self, action: #selector(showInformation), for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -92,9 +93,12 @@ class MainViewController: UIViewController {
             }
         }
     }
-
+    
     @objc private func showInformation() {
-        
+        let webViewVC = WebViewController()
+        guard let stringURL = openUrlButton.titleLabel?.text, let url = URL(string: stringURL) else { return }
+        webViewVC.url = url
+        present(webViewVC, animated: true, completion: nil)
     }
 }
 
@@ -133,4 +137,3 @@ extension MainViewController {
         ])
     }
 }
-

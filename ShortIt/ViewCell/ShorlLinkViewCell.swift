@@ -9,13 +9,11 @@ import UIKit
 
 class ShorlLinkViewCell: UITableViewCell {
     
-    let shortLinkButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(showInformation), for: .touchUpInside)
-        return button
+    let shortLinkButton: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .boldSystemFont(ofSize: 16)
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -36,11 +34,10 @@ class ShorlLinkViewCell: UITableViewCell {
         ])
     }
     
-    @objc private func showInformation() {
-        
+    @objc private func showInformation(from url: String) {
     }
     
     func configure(with title: Responce) {
-        shortLinkButton.setTitle(title.shortUrl, for: .normal)
+        shortLinkButton.text = title.shortUrl
     }
 }

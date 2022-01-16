@@ -19,7 +19,7 @@ final class StorageManager {
     var responces: [Responce] {
         get {
             guard let data = userDefaults.data(forKey: key), let model = try? PropertyListDecoder().decode([Responce].self, from: data) else { return [] }
-                return model
+            return model
         }
         set {
             if let data = try? PropertyListEncoder().encode(newValue) {
