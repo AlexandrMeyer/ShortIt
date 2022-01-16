@@ -40,12 +40,7 @@ class ShorlLinkViewCell: UITableViewCell {
         
     }
     
-//    func configure(with title: String) {
-//        shortLinkButton.setTitle(title, for: .normal)
-//    }
-    
     func configure(with title: Responce) {
-        let urlTitle = StorageManager.shared.showUrl(forkey: title.longUrl)
-        shortLinkButton.setTitle(urlTitle, for: .normal)
+        shortLinkButton.setTitle(title.shortUrl, for: .normal)
     }
 }

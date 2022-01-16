@@ -12,22 +12,24 @@ final class StorageManager {
     static let shared = StorageManager()
     
     private let userDefaults = UserDefaults.standard
-    
-    var linkArray: [Responce] = []
+    private let key = "responce"
     
     private init() {}
     
-    func saveResponce(_ responce: Responce) {
-        userDefaults.set(responce.shortUrl, forKey: responce.longUrl)
-        linkArray.append(responce)
+    var responces: [Responce] {
+        get {
+            guard let data = userDefaults.data(forKey: key), let model = try? PropertyListDecoder().decode([Responce].self, from: data) else { return [] }
+                return model
+        }
+        set {
+            if let data = try? PropertyListEncoder().encode(newValue) {
+                userDefaults.set(data, forKey: key)
+            }
+        }
     }
     
-//    func saveUrl(_ title: String, forkey key: String) {
-//         userDefaults.set(title, forKey: key)
-//        linkArray.append(title)
-//    }
-    
-    func showUrl(forkey key: String) -> String? {
-        userDefaults.string(forKey: key)
+    func saveResponce(_ responce: Responce) {
+        let responce = Responce(shortUrl: responce.shortUrl, longUrl: responce.longUrl)
+        responces.append(responce)
     }
 }

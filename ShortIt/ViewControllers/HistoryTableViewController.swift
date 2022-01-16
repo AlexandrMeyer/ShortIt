@@ -23,13 +23,13 @@ class HistoryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StorageManager.shared.linkArray.count
+        return StorageManager.shared.responces.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ShorlLinkViewCell
         
-        let title = StorageManager.shared.linkArray[indexPath.row]
+        let title = StorageManager.shared.responces[indexPath.row]
         cell.configure(with: title)
         return cell
     }
