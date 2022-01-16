@@ -24,6 +24,8 @@ class MainViewController: UIViewController {
         textField.backgroundColor = UIColor(white: 1, alpha: 0.3)
         textField.textColor = .white
         textField.tintColor = .white
+        textField.clearButtonMode = .always
+        textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.borderStyle = .roundedRect
         return textField
     }()
