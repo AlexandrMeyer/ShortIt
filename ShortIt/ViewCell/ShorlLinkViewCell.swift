@@ -34,9 +34,6 @@ class ShorlLinkViewCell: UITableViewCell {
         ])
     }
     
-    @objc private func showInformation(from url: String) {
-    }
-    
     func configure(with title: Responce) {
         shortLinkButton.text = title.shortUrl
     }
