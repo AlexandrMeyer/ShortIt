@@ -36,7 +36,9 @@ final class NetworkManager {
             
             do {
                 let result = try JSONDecoder().decode(Responce.self, from: data)
-                completion(.success(result))
+                DispatchQueue.main.async {
+                    completion(.success(result))
+                }
             } catch {
                 completion(.failure(.decodingError))
             }

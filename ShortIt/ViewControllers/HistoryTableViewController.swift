@@ -32,6 +32,7 @@ class HistoryTableViewController: UITableViewController {
         
         let title = StorageManager.shared.responces[indexPath.row]
         cell.configure(with: title)
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     

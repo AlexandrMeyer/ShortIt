@@ -83,14 +83,12 @@ class MainViewController: UIViewController {
         let apiURL = NetworkManager.shared.api+text
         
         NetworkManager.shared.fetchData(with: apiURL) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let responce):
-                    self?.openUrlButton.setTitle(responce.shortUrl, for: .normal)
-                    self?.saveLink(responce)
-                case .failure(let error):
-                    print(error)
-                }
+            switch result {
+            case .success(let responce):
+                self?.openUrlButton.setTitle(responce.shortUrl, for: .normal)
+                self?.saveLink(responce)
+            case .failure(let error):
+                print(error)
             }
         }
         
