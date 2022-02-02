@@ -30,17 +30,26 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ShorlLinkViewCell
         
-        let title = StorageManager.shared.responces[indexPath.row]
-        cell.configure(with: title)
+        let responce = StorageManager.shared.responces[indexPath.row]
+        cell.configure(with: responce)
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let title = StorageManager.shared.responces[indexPath.row]
-        guard let url = URL(string: title.longUrl) else { return }
+        let responce = StorageManager.shared.responces[indexPath.row]
+        guard let url = URL(string: responce.longUrl) else { return }
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true, completion: nil)
+    }
+    
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            StorageManager.shared.removeResponce(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }

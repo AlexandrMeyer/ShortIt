@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  CreateShortLinkViewController.swift
 //  ShortIt
 //
 //  Created by Александр on 13/01/2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class CreateShortLinkViewController: UIViewController {
     
     private lazy var backgroundView: UIView = {
         let view = UIView()
@@ -110,7 +110,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: - Setup UIElements Constraints
-extension MainViewController {
+extension CreateShortLinkViewController {
     private func setBackgroundViewConstraints() {
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),

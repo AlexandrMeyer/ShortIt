@@ -18,8 +18,8 @@ final class StorageManager {
     
     var responces: [Responce] {
         get {
-            guard let data = userDefaults.data(forKey: key), let model = try? PropertyListDecoder().decode([Responce].self, from: data) else { return [] }
-            return model
+            guard let data = userDefaults.data(forKey: key), let responce = try? PropertyListDecoder().decode([Responce].self, from: data) else { return [] }
+            return responce
         }
         set {
             if let data = try? PropertyListEncoder().encode(newValue) {
@@ -31,5 +31,18 @@ final class StorageManager {
     func saveResponce(_ responce: Responce) {
         let responce = Responce(shortUrl: responce.shortUrl, longUrl: responce.longUrl)
         responces.append(responce)
+    }
+    
+    func removeResponce(at index: Int) {
+        if let data = userDefaults.data(forKey: key) {
+            do {
+                var arr = try PropertyListDecoder().decode([Responce].self, from: data)
+                arr.remove(at: index)
+                let data = try? PropertyListEncoder().encode(arr)
+                userDefaults.set(data, forKey: key)
+            } catch {
+                print(error)
+            }
+        }
     }
 }

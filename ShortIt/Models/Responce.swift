@@ -1,5 +1,5 @@
 //
-//  Link.swift
+//  Responce.swift
 //  ShortIt
 //
 //  Created by Александр on 14/01/2022.

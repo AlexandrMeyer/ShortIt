@@ -13,7 +13,7 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         tabBar.backgroundColor = UIColor(white: 0.1, alpha: 0.05)
         
-        let mainViewController = MainViewController()
+        let mainViewController = CreateShortLinkViewController()
         let icon1 = UITabBarItem(title: "Shorted now", image: UIImage(named: "lasso.and.sparkles"), selectedImage: UIImage(named: "lasso.and.sparkles"))
         mainViewController.tabBarItem = icon1
         
